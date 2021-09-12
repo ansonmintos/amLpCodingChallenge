@@ -1,6 +1,6 @@
 import EventEmitter from 'events';
 import WebSocket from 'ws';
-import Liveperson from './liveperson.js';
+import Liveperson from './liveperson_connector.js';
 
 // to open the connection to liveperson follow steps
 // step 1 - get the required domains and construct required urls

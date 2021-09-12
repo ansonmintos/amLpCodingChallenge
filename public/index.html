@@ -5,14 +5,24 @@
             <img src="./icons/liveperson.png">
             <h1>Coding Challenge</h1>
             <h2>Andreas Maude</h2>
-            <hr>
         </div>
+        <hr>
 
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
     </head>
     
     <body>
-        <div class="row">
+        <div>
+            <!-- <form action='/api/change_account_number' method='POST'>
+                <div class="basic_text main_body">
+                    <label id="acc_num" for='account_number'>Account number</label>
+                    <input name='account_number' type='text' placeholder="33246971">
+                </div>
+            </form> -->
+            <p class="basic_text main_body">By default, this app uses account number 33246971 to connect to LivePerson.</p>
+        </div>
+        <hr>
+        <div class="row" style="padding-top:30px;padding-bottom:30px;padding-left: 60px;padding-right: 60px;">
             <div class="column50">
                 <form action='/api/open_connection' method='GET'>
                     <input type='submit' value='Start conversation (open connection to LivePerson)' class="centre button1">
@@ -30,9 +40,9 @@
             </div>
             <div class="column60">
                 <form action='/api/send_text_to_liveperson' method='POST'>
-                    <div>
-                        <label for='lp-input-text' class="basic_text">Enter text</label><br/>
-                        <input class="centre" name='lp-input-text' type='text'>
+                    <div style="padding-bottom:20px">
+                        <label for='lp-input-text' class="orange_text">Enter text</label><br/>
+                        <input name='lp-input-text' class="centre" style="text-align: left;" type='text'>
                     </div>
                     <input type='submit' value='Send' class="button1">
                 </form>
@@ -41,11 +51,23 @@
                 <img src="./icons/speech_bubble.png" style='width:100px;height:100px;' class='centre'>
             </div>
         </div>
-        <hr>
-        <div class='centre'>
+        <div class="centre_mid" style="padding-bottom:0px">
+            <hr>
+        </div>
+        
+        <div class="row centre_mid basic_text">
+            <div>
+                <h3>Instructions</h3>
+                <li>Click "Start conversation"</li><br>
+                <li>Enter desired text in the text bar</li><br>
+                <li>Click send or press enter</li><br>
+                <li>Click "Close connection"</li><br>
+            </div>
+        </div> 
+        <!-- <div class='centre'>
             <form action='/api/close_app' method='GET'>
                 <input type='submit' value='Close app' style='width:25%;' class="button1">
             </form>
-        </div>
+        </div> -->
     </body>
 </html>
