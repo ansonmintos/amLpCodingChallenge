@@ -7,6 +7,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url)); // set local director
 
 const app = express(); // create express app
 
+const PORT = process.env.PORT || 3000 // port to listen on
+
 // create a custom handler to handle the websocket connection to liveperson
 var wsh = new Websocket_Handler.Websocket_Handler();
 
@@ -46,6 +48,6 @@ app.post('/api/send_text_to_liveperson', (request, response) => {
     response.redirect('/');
 });
 
-var server = app.listen(3000, () => {
-    console.log(`listening on port 3000`)
+var server = app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}`)
 });
