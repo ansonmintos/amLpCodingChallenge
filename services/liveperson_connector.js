@@ -90,6 +90,21 @@ class Liveperson {
             }
         }
     };
+
+    ws_request_close_conversation(conversation_id) {
+        return {
+            "kind": "req",
+            "id": "3",
+            "type": "cm.UpdateConversationField",
+            "body": {
+                "conversationId": `${conversation_id}`,
+                "conversationField": [{
+                    "field": "ConversationStateField",
+                    "conversationState": "CLOSE"
+                }]
+            }
+        }
+    };
 };
 
 export default {Liveperson}

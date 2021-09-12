@@ -46,7 +46,12 @@ class Websocket_Handler {
                         console.log('conversation_id:',conversation_id);
                         break;
                     case '2':
+                        // a message has been sent to the conversation successfully
                         console.log('received response with ID 2');
+                        break;
+                    case '3':
+                        // the conversation has been closed successfully
+                        console.log('received response with ID 3');
                         break;
                     default:
                         console.log('unknown event ID in received message');
@@ -73,6 +78,16 @@ class Websocket_Handler {
                 console.log('no text sent. Try sending more text')
             }
         });
+
+        eventEmitter.on('close_connection', () => {
+            // ensure the websocket is open and connected
+            if (ws.readyState == 1) {
+                ws.send(JSON.stringify(lp.ws_request_close_conversation(conversation_id)));
+                console.log(`liveperson conversation closed`)
+            } else {
+                console.log('cannot close conversation, websocket already closed.')
+            }
+        });
     };
 
     // alert the websocket to send a message to the conversation
@@ -82,12 +97,7 @@ class Websocket_Handler {
 
     // alert the websocket to close the connection, if it is open, otherwise ignore
     close_connection() {
-        if (ws && ws.readyState == 1) {
-            ws.close();
-            console.log('websocket closed');
-        } else{
-            console.log('tried to close connection but it is not currently open. Try opening it first');
-        }
+        eventEmitter.emit('close_connection')
     };
 }
 
